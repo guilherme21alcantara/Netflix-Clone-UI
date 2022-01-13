@@ -71,16 +71,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
   void handlerGestur() {
     setState(() {
       
-    
-    });
-   
-  }
-
-  void handlerGesture() {
-    setState(() {
-      controlVisible = !controlVisible;
-      
-      if(a==75.0)
+    if(a==75.0)
       {
         
         a=0;
@@ -89,6 +80,15 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       {
         a=75.0;
       }
+    });
+   
+  }
+
+  void handlerGesture() {
+    setState(() {
+      controlVisible = !controlVisible;
+      
+      
     });
     autoHide();
   }
@@ -166,10 +166,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen>
       
             onTap: ()
             {
-              handlerGestur();
               handlerGesture();
             }
             ,
+            onDoubleTap: ()
+            {
+              handlerGestur();
+            },
           )
         ],
       )
