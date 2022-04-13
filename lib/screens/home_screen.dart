@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ScrollController? controller;
   @override
   void initState() {
-     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black, // navigation bar color
     ));
@@ -37,299 +37,297 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     WidgetsFlutterBinding.ensureInitialized();
-   var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-    return FutureBuilder(builder:(BuildContext context, AsyncSnapshot<String> snapshot)
-    {
-      return
-      Scaffold(
-      backgroundColor: backgroundpt,
-      resizeToAvoidBottomInset: false,
-      body: isPortrait ==true?getBody(): getBody(),
-      
-      
-    );
-    } );
-    
+    var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+    return FutureBuilder(
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+      return Scaffold(
+        backgroundColor: backgroundpt,
+        resizeToAvoidBottomInset: false,
+        body: isPortrait == true ? getBody() : getBody(),
+      );
+    });
   }
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
 
-    return Container(child: ListView(
-      controller: controller,
-      // controller: teste,
-      children: [
-        GestureDetector(
-          child: Stack(
-            children: [
-              Container(
-                width: size.height - 80,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: 480,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/banner_1.png"),
-                                  fit: BoxFit.cover)),
-                        ),
-                        Container(
-                          height: 480,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [
-                                  Colors.black.withOpacity(0.85),
-                                  Colors.black.withOpacity(0.0)
-                                ],
-                                end: Alignment.topCenter,
-                                begin: Alignment.bottomCenter),
-                          ),
-                        ),
-                        Container(
-                          height: 480,
-                          width: size.width,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                "assets/images/titulo_1.webp",
-                                width: 300,
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 8, right: 8),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Text(
-                                      "Clever",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 3,
-                                      width: 3,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.7),
-                                          shape: BoxShape.circle),
-                                    ),
-                                    Text(
-                                      "irreverent",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 3,
-                                      width: 3,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white.withOpacity(0.7),
-                                          shape: BoxShape.circle),
-                                    ),
-                                    Text(
-                                      "exciting",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "My list",
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.85),
-                                  fontSize: 10),
-                            )
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: ()async  {
-                             
-                            await
-                            Navigator.push(
-                                context,
-                                PageTransition(
-                                    type: PageTransitionType.fade,
-                                    reverseDuration:
-                                        Duration(milliseconds: 100),
-                                    child: VideoPlayerScreen(
-                                        video: minhaLista[1])));
-                         
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: playButtonColor,
-                                borderRadius: BorderRadius.circular(4)),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 8, right: 13, top: 2, bottom: 2),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.play_arrow,
-                                    color: Colors.black,
-                                    size: 30,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "Play",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          children: [
-                            Icon(
-                              Icons.info_outline,
-                              size: 30,
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "know more",
-                              style: TextStyle(
-                                  color: Colors.white.withOpacity(0.85),
-                                  fontSize: 10),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        getLista(minhaLista, "My list", 100, 160),
-                        getLista(popularesLista, "Popular Netflix", 100, 160),
-                        getLista(emAltaLista, "on the rise", 100, 160),
-                        getLista(originalLista, "Netflix Originals", 160, 300),
-                        getLista(animesLista, "Animes", 100, 160),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                child: SafeArea(
+    return Container(
+      child: ListView(
+        controller: controller,
+        // controller: teste,
+        children: [
+          GestureDetector(
+            child: Stack(
+              children: [
+                Container(
+                  width: size.height - 80,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Stack(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: Row(
+                          Container(
+                            height: 480,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/banner_1.png"),
+                                    fit: BoxFit.cover)),
+                          ),
+                          Container(
+                            height: 480,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                  colors: [
+                                    Colors.black.withOpacity(0.85),
+                                    Colors.black.withOpacity(0.0)
+                                  ],
+                                  end: Alignment.topCenter,
+                                  begin: Alignment.bottomCenter),
+                            ),
+                          ),
+                          Container(
+                            height: 480,
+                            width: size.width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Image.asset(
-                                  "assets/images/logo.ico",
-                                  width: 35,
-                                  fit: BoxFit.cover,
+                                  "assets/images/titulo_1.webp",
+                                  width: 300,
                                 ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 8, right: 8),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        "Clever",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 3,
+                                        width: 3,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                            shape: BoxShape.circle),
+                                      ),
+                                      Text(
+                                        "irreverent",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 3,
+                                        width: 3,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Colors.white.withOpacity(0.7),
+                                            shape: BoxShape.circle),
+                                      ),
+                                      Text(
+                                        "exciting",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
                           ),
-                          Row(
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
                             children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.search,
-                                  size: 28,
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => PesquisarScreen()));
-                                },
+                              Icon(
+                                Icons.add,
+                                size: 30,
                               ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "My list",
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.85),
+                                    fontSize: 10),
+                              )
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              await Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.fade,
+                                      reverseDuration:
+                                          Duration(milliseconds: 100),
+                                      child: VideoPlayerScreen(
+                                          video: minhaLista[1])));
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: playButtonColor,
+                                  borderRadius: BorderRadius.circular(4)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8, right: 13, top: 2, bottom: 2),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.play_arrow,
+                                      color: Colors.black,
+                                      size: 30,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      "Play",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Icon(
+                                Icons.info_outline,
+                                size: 30,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                "know more",
+                                style: TextStyle(
+                                    color: Colors.white.withOpacity(0.85),
+                                    fontSize: 10),
+                              )
                             ],
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Series",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "Films",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "My list",
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.w500),
-                          ),
+                          getLista(minhaLista, "My list", 100, 160),
+                          getLista(popularesLista, "Popular Netflix", 100, 160),
+                          getLista(emAltaLista, "on the rise", 100, 160),
+                          getLista(
+                              originalLista, "Netflix Originals", 160, 300),
+                          getLista(animesLista, "Animes", 100, 160),
                         ],
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
-          ),
-          onTap: () {
-            if (con) {
-              Navigator.pop(context);
-              setState(() {
-                con = false;
-              });
-            }
-          },
-        )
-      ],
-    ),);
+                Container(
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/logo.ico",
+                                    width: 35,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.search,
+                                    size: 28,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => PesquisarScreen()));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Series",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              "Films",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              "My list",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            onTap: () {
+              if (con) {
+                Navigator.pop(context);
+                setState(() {
+                  con = false;
+                });
+              }
+            },
+          )
+        ],
+      ),
+    );
   }
 
   Column getLista(
@@ -355,7 +353,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: List.generate(lista.length, (index) {
               return GestureDetector(
                 onTap: () {
-                    
                   _onButtonPressed(lista[index]);
                   setState(() {
                     con = true;
@@ -398,13 +395,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onButtonPressed(final dynamic video) async {
-    
     showBottomSheet(
-      
         elevation: 0,
         context: context,
         backgroundColor: Color(0xff2b2b2b),
-      //  barrierColor: Colors.transparent,
+        //  barrierColor: Colors.transparent,
 
         // use the shape border property to give it rounder corners
         shape: RoundedRectangleBorder(
@@ -455,12 +450,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                         if (con) {
-              Navigator.pop(context);
-              setState(() {
-                con = false;
-              });
-            }
+                                        if (con) {
+                                          Navigator.pop(context);
+                                          setState(() {
+                                            con = false;
+                                          });
+                                        }
                                       },
                                       child: Container(
                                           decoration: BoxDecoration(
@@ -533,8 +528,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           GestureDetector(
                             onTap: () {
-
-                           onLoadingH(context, video);
+                              onLoadingH(context, video);
 //                               Navigator.push(
 //   context,
 //   PageRouteBuilder(pageBuilder: (_, __, ___) => ),
@@ -573,7 +567,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               });
 
                                */
-                              
                             },
                             child: Container(
                               width: 200,
